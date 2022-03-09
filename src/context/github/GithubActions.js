@@ -3,10 +3,7 @@ import axios from "axios";
 const GITHUB_URL = process.env.REACT_APP_GITHUB_URL;
 
 const github = axios.create({
-	baseURL: GITHUB_URL,
-	headers: {
-		Authorization: `Bearer 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`,
-	},
+	baseURL: GITHUB_URL
 });
 
 export const searchUsers = async (text) => {
