@@ -1,12 +1,17 @@
-import React, { useContext } from "react";
-import GithubContext from "../../context/github/GithubContext";
+import React from "react";
+import useGithub from "../../context/github/GithubContext";
+import Loader from "../layout/Loader";
 import UserItem from "./UserItem";
 
 const UserResults = () => {
-	const { users, loading } = useContext(GithubContext);
+	const { users, loading } = useGithub();
 
 	if (loading) {
-		return <h1>Loading...</h1>;
+		return <Loader />;
+	}
+
+	if (users.length < 1) {
+		return <h1 className="text-4xl">No Results to Show</h1>;
 	}
 
 	return (

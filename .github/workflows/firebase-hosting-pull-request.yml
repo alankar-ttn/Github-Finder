@@ -9,6 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - env:
+          REACT_APP_GITHUB_URL: ${{secrets.REACT_APP_GITHUB_URL}}
+          REACT_APP_GITHUB_TOKEN: ${{secrets.REACT_APP_GITHUB_TOKEN}}
       - run: npm ci && npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
